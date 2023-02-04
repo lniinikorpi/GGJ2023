@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0988810881e8064cadc11e9edb966f0, type: 3}
   m_Name: WaveData_Level_3
   m_EditorClassIdentifier: 
-  waveLength: 400
-  spawnInterval: 10
-  maxEnemiesPerSpawn: 4
+  waveLength: 250
+  spawnInterval: 9
+  maxEnemiesPerSpawn: 3
   startMoney: 150
   enemies:
   - data: {fileID: 11400000, guid: c224d187bb11a3041be812c771588fc4, type: 2}
-    possibility: 60
+    possibility: 50
   - data: {fileID: 11400000, guid: da88f6b4da0752d44a3fbc55aabd663c, type: 2}
-    possibility: 30
+    possibility: 35
   - data: {fileID: 11400000, guid: 1a5523e3bac01d34dbdc9b25f1dd115e, type: 2}
-    possibility: 10
+    possibility: 15

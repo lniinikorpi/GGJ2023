@@ -34,6 +34,9 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        if(transform.position.x > 8.3f) {
+            return;
+        }
         Enemy enemy = other.GetComponent<Enemy>();
         if(enemy == null || enemy.row != m_row) {
             return;

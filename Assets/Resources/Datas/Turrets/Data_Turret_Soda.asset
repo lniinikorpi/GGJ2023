@@ -20,17 +20,20 @@ MonoBehaviour:
   attackDelay: 0.4
   graphicsOffsett: {x: 0, y: 0}
   dieDelay: 0.8333333
-  dieData: {fileID: 0}
+  dieData: {fileID: 11400000, guid: 7b5e7fccc0dcb4440ab7f271288f9a68, type: 2}
   projectile: {fileID: 0}
   projectileSpeed: 1.5
-  price: 35
+  price: 20
+  projectileOffset: {x: 0, y: 0}
   upgrades:
   - cost: 20
-    attackSpeedBuff: 50
-    damageBuff: 50
+    attackSpeedBuff: 0
+    damageBuff: 0
+    healthBuff: 3
   - cost: 20
     attackSpeedBuff: 50
     damageBuff: 50
+    healthBuff: 3
   projectileOnHitEffect: {fileID: 0}
   shootData: {fileID: 0}
   spawnData: {fileID: 11400000, guid: 31285ed75bdb9434fa3f959d0a2d3e16, type: 2}

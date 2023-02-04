@@ -5,14 +5,14 @@ using UnityEngine;
 public class Timer
 {
     public float duration;
-    public float timeRemaining;
-    public float timeElapsed { get => duration - timeRemaining; }
+    public float timeLeft;
+    public float timeElapsed { get => duration - timeLeft; }
     public float timeElapsedNormalized { get => timeElapsed / duration; }
-    public bool isPlaying { get => timeRemaining > 0 && !m_isPaused; }
+    public bool isPlaying { get => timeLeft > 0 && !m_isPaused; }
     private bool m_isPaused;
     public float timeLeftNormalized
     {
-        get => timeRemaining / duration;
+        get => timeLeft / duration;
     }
 
     public Timer()
@@ -36,7 +36,7 @@ public class Timer
             return false;
         }
 
-        timeRemaining -= Time.deltaTime;
+        timeLeft -= Time.deltaTime;
         if (!isPlaying)
         {
             Stop();
@@ -55,12 +55,12 @@ public class Timer
 
     public void Stop()
     {
-        timeRemaining = 0;
+        timeLeft = 0;
     }
 
     public void Reset()
     {
-        timeRemaining = duration;
+        timeLeft = duration;
     }
 
     public void Reset(float value)

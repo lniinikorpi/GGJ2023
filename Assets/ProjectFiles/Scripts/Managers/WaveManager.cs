@@ -15,6 +15,7 @@ public class WaveManager : Singleton<WaveManager>
             return;
         }
         if (isSpawning) {
+            UIManager.Instance.waveSlider.value = m_waveTimer.timeLeftNormalized;
             if(m_waveTimer != null && !m_waveTimer.Update()) {
                 isSpawning = false;
                 GlobalEventSender.SendWaveTimerEnd(new EventArgs());

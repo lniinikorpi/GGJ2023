@@ -13,6 +13,9 @@ public class Damageable : MonoBehaviour, IDamageable {
     }
 
     public virtual void TakeDamage(float damage) {
+        if (!isAlive) {
+            return;
+        }
         currentHealth -= damage;
         if (isAlive) {
             return;

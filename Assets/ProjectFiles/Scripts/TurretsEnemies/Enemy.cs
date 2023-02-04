@@ -44,7 +44,7 @@ public class Enemy : Damageable
                 anim.SetBool("IsWalking", false);
                 if (m_attackTimer != null && !m_attackTimer.Update()) {
                     StartCoroutine(HandleAttack());
-                    m_attackTimer.Reset(Random.Range(m_attackTimer.duration * .9f, m_attackTimer.duration * 1.1f));
+                    m_attackTimer.Reset(Random.Range(1 / m_data.attackSpeed * .9f, 1 / m_data.attackSpeed * 1.1f));
                 }
                 return;
             }

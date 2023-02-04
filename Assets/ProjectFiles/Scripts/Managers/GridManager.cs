@@ -108,7 +108,7 @@ public class GridManager : Singleton<GridManager>
     }
 
     public bool IsEnemiesInRow(Row row, float position) {
-        return enemies.Where(enemy => enemy.row == row && enemy.transform.position.x > position).Any();
+        return enemies.Where(enemy => enemy.row == row && enemy.transform.position.x > position && enemy.transform.position.x < 8.3f).Any();
     }
 
     private void OnWaveTimerEnd(EventArgs args) {

@@ -17,6 +17,7 @@ public class Turret : Damageable
     private int m_currentLevel = 0;
     private float m_damage;
     private Animator m_anim;
+    private float m_attackSpeed;
     public int Price { get => m_data.price; }
 
     void Update()
@@ -39,7 +40,8 @@ public class Turret : Damageable
         this.row = row;
         maxHealth = m_data.health;
         currentHealth = m_data.health;
-        m_attackTimer = new Timer(1 / m_data.attackSpeed);
+        m_attackSpeed = 1 / m_data.attackSpeed;
+        m_attackTimer = new Timer(m_attackSpeed);
         m_attackTimer.Start();
         m_upgradeButton.onClick.AddListener(UpgradeTurret);
         m_damage = m_data.damage;
@@ -57,7 +59,7 @@ public class Turret : Damageable
     }
 
     private IEnumerator Attack() {
-        m_attackTimer.Reset(Random.Range(m_attackTimer.duration * .9f, m_attackTimer.duration * 1.1f));
+        m_attackTimer.Reset(Random.Range(m_attackSpeed * .9f, m_attackSpeed * 1.1f));
         if (!GridManager.Instance.IsEnemiesInRow(row, transform.position.x)) {
             yield break;
         }
@@ -66,14 +68,17 @@ public class Turret : Damageable
         if (m_data.shootData != null) {
             AudioManager.Instance.PlayAudio(m_data.shootData);
         }
-        Instantiate(GameManager.Instance.projectileBase, transform.position, Quaternion.identity).GetComponent<Projectile>().Init(m_data, m_damage, m_data.projectileSpeed, row);
+        Instantiate(GameManager.Instance.projectileBase, transform.position + (Vector3)m_data.projectileOffset, Quaternion.identity).GetComponent<Projectile>().Init(m_data, m_damage, m_data.projectileSpeed, row);
     }
 
     private void UpgradeTurret() {
         GameManager.Instance.AddCurrency(-m_data.upgrades[m_currentLevel].cost);
         Upgrade upgrade = m_data.upgrades[m_currentLevel];
-        m_attackTimer.duration *= upgrade.attackSpeedBuff / 100;
+        m_attackSpeed *= upgrade.attackSpeedBuff / 100;
         m_damage *= 1f + upgrade.damageBuff / 100;
+        currentHealth += upgrade.healthBuff;
+        maxHealth += upgrade.healthBuff;
+        m_currentLevel += upgrade.healthBuff;
         m_currentLevel++;
         GameManager.Instance.AddCurrency(0);
         if(m_data.upgradeData != null) {
@@ -84,6 +89,7 @@ public class Turret : Damageable
 
     public override IEnumerator Die() {
         StopCoroutine(Attack());
+        AudioManager.Instance.PlayAudio(m_data.dieData);
         m_anim.SetTrigger("Die");
         yield return new WaitForSeconds(m_data.dieDelay);
         GridManager.Instance.turrets.Remove(this);
@@ -94,6 +100,9 @@ public class Turret : Damageable
     }
 
     public override void TakeDamage(float damage) {
+        if (!isAlive) {
+            return;
+        }
         if (m_data.onHitAudio != null) {
             AudioManager.Instance.PlayAudio(m_data.onHitAudio);
         }

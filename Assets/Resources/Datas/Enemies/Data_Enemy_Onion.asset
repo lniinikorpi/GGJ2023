@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Data_Enemy_Onion
   m_EditorClassIdentifier: 
   attackSpeed: 0.25
-  damage: 10
-  health: 250
+  damage: 7
+  health: 200
   graphicObject: {fileID: 2328927147974815779, guid: af72b47d1a33f424f9fb10e6237c34a8, type: 3}
   icon: {fileID: 21300000, guid: cef9bcbb07cf90c45af26be9b6ab5f54, type: 3}
   attackDelay: 1.05
@@ -22,5 +22,5 @@ MonoBehaviour:
   dieDelay: 0.6666667
   dieData: {fileID: 0}
   movementSpeed: 0.25
-  currencyEarned: 50
+  currencyEarned: 75
   attackAudio: {fileID: 0}
