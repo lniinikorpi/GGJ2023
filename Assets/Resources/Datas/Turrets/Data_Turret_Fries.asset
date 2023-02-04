@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735cbc78cf3b3d648bbfb7b56fe4583d, type: 3}
+  m_Name: Data_Turret_Fries
+  m_EditorClassIdentifier: 
+  attackSpeed: 0.75
+  damage: 2.5
+  health: 6
+  graphicObject: {fileID: 3583145118517790417, guid: 83bed51ba3a33fd45804a40b711221d8, type: 3}
+  icon: {fileID: 21300000, guid: 9e1398ed53d561849b2e0a3d9c231909, type: 3}
+  attackDelay: 0.4
+  graphicsOffsett: {x: 0, y: 0}
+  projectile: {fileID: 7220310243294286790, guid: 04f5b49fbbb03a840b3da33d8aff4833, type: 3}
+  projectileSpeed: 2
+  price: 25
+  upgrades:
+  - cost: 20
+    attackSpeedBuff: 50
+    damageBuff: 50
+  - cost: 20
+    attackSpeedBuff: 50
+    damageBuff: 50
+  projectileOnHitEffect: {fileID: 3416561732144039926, guid: 05373c35c5c91cd4a8f75ed45c8abe92, type: 3}

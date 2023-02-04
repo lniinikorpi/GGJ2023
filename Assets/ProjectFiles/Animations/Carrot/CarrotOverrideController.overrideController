@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CarrotOverrideController
+  m_Controller: {fileID: 9100000, guid: b29ff30e04db2db43a77d0ea5e9f66ef, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: ec144244128b5f84e888ff4ae118496f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 02384d61f940c834e91c02271609d46d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7114395106dc59242ab1730e8f3d0995, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7229508f82bc2fa419b161aa44b447b1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ebd9424ebf0bb55448fef752d0fff833, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dda1da684b0457a4696629415e10479d, type: 2}

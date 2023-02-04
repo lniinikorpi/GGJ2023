@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735cbc78cf3b3d648bbfb7b56fe4583d, type: 3}
+  m_Name: Data_Turret_Soda
+  m_EditorClassIdentifier: 
+  attackSpeed: 0
+  damage: 0
+  health: 15
+  graphicObject: {fileID: 3583145118517790417, guid: dc875fb409dcb554e86c0ad37dc37496, type: 3}
+  icon: {fileID: 21300000, guid: a362d1958e22ee142bb06c538b29e6d3, type: 3}
+  attackDelay: 0.4
+  graphicsOffsett: {x: 0, y: 0}
+  projectile: {fileID: 0}
+  projectileSpeed: 1.5
+  price: 35
+  upgrades:
+  - cost: 20
+    attackSpeedBuff: 50
+    damageBuff: 50
+  - cost: 20
+    attackSpeedBuff: 50
+    damageBuff: 50
