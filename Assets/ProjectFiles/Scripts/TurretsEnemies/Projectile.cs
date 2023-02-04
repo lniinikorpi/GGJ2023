@@ -10,8 +10,10 @@ public class Projectile : MonoBehaviour
     private bool m_donedDamage;
     private Timer m_timer;
     private GameObject onHitObject;
+    private TurretData data;
 
     public void Init(TurretData data, float damage, float projectileSpeed, Row row) {
+        this.data = data;
         m_movementSpeed = projectileSpeed;
         m_damage = damage;
         m_row = row;
@@ -47,6 +49,10 @@ public class Projectile : MonoBehaviour
         if (onHitObject != null) {
             Instantiate(onHitObject, transform.position, Quaternion.identity); 
         }
+        if(data.projectileOnHitEffect != null) {
+            AudioManager.Instance.PlayAudio(data.projectileOnHitData);
+        }
+
         Destroy(gameObject);
     }
 }

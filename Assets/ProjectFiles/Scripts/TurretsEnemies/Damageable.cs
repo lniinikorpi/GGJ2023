@@ -7,7 +7,8 @@ public class Damageable : MonoBehaviour, IDamageable {
     public float currentHealth { get; set; }
     public float maxHealth { get; set; }
 
-    public virtual void Die() {
+    public virtual IEnumerator Die() {
+        yield return null;
         Destroy(gameObject);
     }
 
@@ -17,6 +18,6 @@ public class Damageable : MonoBehaviour, IDamageable {
             return;
         }
         currentHealth = 0;
-        Die();
+        StartCoroutine(Die());
     }
 }

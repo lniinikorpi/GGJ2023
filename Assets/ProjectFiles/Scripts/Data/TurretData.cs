@@ -17,4 +17,7 @@ public class TurretData : AttackUnitData {
 
     public List<Upgrade> upgrades;
     public GameObject projectileOnHitEffect;
+    public AudioData shootData;
+    public AudioData spawnData;
+    public AudioData projectileOnHitData;
 }

@@ -14,12 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveLength: 10
   spawnInterval: 5
-  maxEnemiesPerSpawn: 7
+  maxEnemiesPerSpawn: 1
   startMoney: 150
   enemies:
-  - data: {fileID: 11400000, guid: da88f6b4da0752d44a3fbc55aabd663c, type: 2}
-    possibility: 50
   - data: {fileID: 11400000, guid: c224d187bb11a3041be812c771588fc4, type: 2}
-    possibility: 50
-  - data: {fileID: 11400000, guid: 1a5523e3bac01d34dbdc9b25f1dd115e, type: 2}
     possibility: 50

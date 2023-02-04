@@ -11,4 +11,5 @@ public class AttackUnitData : ScriptableObject
     public Sprite icon;
     public float attackDelay = .4f;
     public Vector2 graphicsOffsett = Vector2.zero;
+    public float dieDelay;
 }

@@ -30,3 +30,6 @@ MonoBehaviour:
     attackSpeedBuff: 50
     damageBuff: 50
   projectileOnHitEffect: {fileID: 3416561732144039926, guid: c11f0fe76db9b5b49ba418b17bab0ef8, type: 3}
+  shootData: {fileID: 0}
+  spawnData: {fileID: 11400000, guid: 31285ed75bdb9434fa3f959d0a2d3e16, type: 2}
+  projectileOnHitData: {fileID: 11400000, guid: 6c512e5aa40060e438033f856e4a3134, type: 2}

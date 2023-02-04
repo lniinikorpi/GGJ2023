@@ -19,5 +19,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 827a92375ff383648b3e3907d50406de, type: 3}
   attackDelay: 0.7
   graphicsOffsett: {x: 0.2, y: 0.1}
+  dieDelay: 0.8833333
   movementSpeed: 0.35
   currencyEarned: 20
+  attackAudio: {fileID: 0}

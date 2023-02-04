@@ -12,6 +12,7 @@ public class TurretButton : MonoBehaviour
             m_turret = value;
             if(value.icon != null) {
                 iconImage.sprite = value.icon;
+                iconImage.SetNativeSize();
             }
         }
     }

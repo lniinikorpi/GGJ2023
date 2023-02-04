@@ -44,6 +44,9 @@ public class Turret : Damageable
         m_damage = m_data.damage;
         m_upgradeButton.gameObject.SetActive(false);
         GridManager.Instance.turrets.Add(this);
+        if(m_data.spawnData != null) {
+            AudioManager.Instance.PlayAudio(m_data.spawnData);
+        }
         m_isInited = true;
         GlobalEventSender.SendTurretSpawnedEvent(new EventArgs() {
             turret = this,
@@ -55,6 +58,9 @@ public class Turret : Damageable
         m_attackTimer.Reset(Random.Range(m_attackTimer.duration * .9f, m_attackTimer.duration * 1.1f));
         if (!GridManager.Instance.IsEnemiesInRow(row, transform.position.x)) {
             return;
+        }
+        if(m_data.shootData != null) {
+            AudioManager.Instance.PlayAudio(m_data.shootData);
         }
         Instantiate(GameManager.Instance.projectileBase, transform.position, Quaternion.identity).GetComponent<Projectile>().Init(m_data, m_damage, m_data.projectileSpeed, row);
     }
@@ -69,12 +75,13 @@ public class Turret : Damageable
         Instantiate(m_levelImagePrefab, m_levelImageParent);
     }
 
-    public override void Die() {
+    public override IEnumerator Die() {
+        yield return new WaitForSeconds(m_data.dieDelay);
         GridManager.Instance.turrets.Remove(this);
         if(GridManager.Instance.selectedTurret == this) {
             GridManager.Instance.UnSelectTurret();
         }
-        base.Die();
+        StartCoroutine(base.Die());
     }
 
     private void OnCurrencyChanged(EventArgs args) {

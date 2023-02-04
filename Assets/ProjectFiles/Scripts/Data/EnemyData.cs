@@ -7,4 +7,5 @@ public class EnemyData : AttackUnitData
 {
     public float movementSpeed = 1.5f;
     public int currencyEarned = 10;
+    public AudioData attackAudio;
 }

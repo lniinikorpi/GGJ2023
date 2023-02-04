@@ -9,5 +9,5 @@ public interface IDamageable
     public float maxHealth { get; set; }
 
     public void TakeDamage(float damage);
-    public void Die();
+    public IEnumerator Die();
 }

@@ -36,7 +36,7 @@ public class Enemy : Damageable
     // Update is called once per frame
     void Update()
     {
-        if (!m_isInited || GameManager.Instance.isPause) {
+        if (!m_isInited || GameManager.Instance.isPause || !isAlive) {
             return;
         }
         if(nearestTurret != null) {
@@ -70,15 +70,21 @@ public class Enemy : Damageable
         if(nearestTurret != null) {
             nearestTurret.TakeDamage(m_data.damage);
         }
+        if(m_data.attackAudio != null) {
+            AudioManager.Instance.PlayAudio(m_data.attackAudio);
+        }
         m_isAttacking = false;
     }
 
-    public override void Die() {
-        StopAllCoroutines();
+    public override IEnumerator Die() {
+        StopCoroutine(HandleAttack());
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        anim.SetTrigger("Die");
+        yield return new WaitForSeconds(m_data.dieDelay);
         int rewards = (int)Random.Range((float)m_data.currencyEarned * .8f, (float)m_data.currencyEarned * 1.2f);
         GameManager.Instance.AddCurrency(rewards);
         GridManager.Instance.RemoveEnemy(this);
-        base.Die();
+        StartCoroutine(base.Die());
     }
 
     private void OnTurretSpawned(EventArgs args) {
