@@ -11,6 +11,8 @@ public enum MenuState {
 public static class StateManager
 {
     private static int m_completedLevels;
+    public static float volume = 1;
+    public static bool isMuted;
     public static int completedLevels {
         get {
             return m_completedLevels;

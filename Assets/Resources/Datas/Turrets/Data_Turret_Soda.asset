@@ -31,8 +31,8 @@ MonoBehaviour:
     damageBuff: 0
     healthBuff: 3
   - cost: 20
-    attackSpeedBuff: 50
-    damageBuff: 50
+    attackSpeedBuff: 0
+    damageBuff: 0
     healthBuff: 3
   projectileOnHitEffect: {fileID: 0}
   shootData: {fileID: 0}

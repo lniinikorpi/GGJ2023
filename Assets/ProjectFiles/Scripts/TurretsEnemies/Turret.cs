@@ -75,10 +75,9 @@ public class Turret : Damageable
         GameManager.Instance.AddCurrency(-m_data.upgrades[m_currentLevel].cost);
         Upgrade upgrade = m_data.upgrades[m_currentLevel];
         m_attackSpeed *= upgrade.attackSpeedBuff / 100;
-        m_damage *= 1f + upgrade.damageBuff / 100;
+        m_damage += upgrade.damageBuff;
         currentHealth += upgrade.healthBuff;
         maxHealth += upgrade.healthBuff;
-        m_currentLevel += upgrade.healthBuff;
         m_currentLevel++;
         GameManager.Instance.AddCurrency(0);
         if(m_data.upgradeData != null) {

@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +13,16 @@ public class MainMenuManager : Singleton<MainMenuManager>
     public GameObject mainPanel;
     public GameObject mapPanel;
     public GameObject congratsPanel;
+
+    public GameObject settingsPanel;
+
+    public Button muteButton;
+    public Sprite muteSprite;
+    public Sprite unMuteSprite;
+
+    public Slider volumeSlider;
+
+    public TMP_Dropdown resolutionDropDown;
     private void Start() {
         congratsPanel.gameObject.SetActive(false);
         switch (StateManager.state) {
@@ -23,6 +36,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
                 break;
         }
         StateManager.state = MenuState.Map;
+        settingsPanel.SetActive(false);
 
         for (int i = 0; i < levelButtons.Count; i++) {
             levelButtons[i].interactable = false;
@@ -42,6 +56,78 @@ public class MainMenuManager : Singleton<MainMenuManager>
                 AudioManager.Instance.FadeAudioOut();
                 SceneLoader.Instance.LoadScene(index);
             });
+        }
+
+        if(StateManager.isMuted) {
+            AudioListener.volume = 0;
+            muteButton.GetComponent<Image>().sprite = muteSprite;
+        }
+        else {
+            muteButton.GetComponent<Image>().sprite = unMuteSprite;
+            volumeSlider.value = StateManager.volume;
+            AudioListener.volume = volumeSlider.value;
+        }
+
+        muteButton.onClick.AddListener(() => {
+            StateManager.isMuted = !StateManager.isMuted;
+            if (StateManager.isMuted) {
+                AudioListener.volume = 0;
+                muteButton.GetComponent<Image>().sprite = muteSprite;
+            }
+            else {
+                muteButton.GetComponent<Image>().sprite = unMuteSprite;
+                volumeSlider.value = StateManager.volume;
+                AudioListener.volume = volumeSlider.value;
+            }
+        });
+
+        volumeSlider.onValueChanged.AddListener((value) => {
+            StateManager.volume = value;
+            if (!StateManager.isMuted) {
+                AudioListener.volume = value;
+            }
+        });
+
+        Resolution[] resolutions = Screen.resolutions;
+        List<TMP_Dropdown.OptionData> optionDatas = new List<TMP_Dropdown.OptionData>();
+        foreach (Resolution resolution in resolutions) {
+            float divider = (float)resolution.width / (float)resolution.height;
+            if (divider >= 1.77f && divider < 1.78f) {
+                optionDatas.Add(new TMP_Dropdown.OptionData() {
+                    text = resolution.width + "x" + resolution.height
+                });
+            }
+        }
+        optionDatas = optionDatas.DistinctBy(x => x.text).ToList();
+        if(optionDatas.Count == 0) {
+            resolutionDropDown.gameObject.SetActive(false);
+        }
+        else {
+            resolutionDropDown.AddOptions(optionDatas);
+            resolutionDropDown.onValueChanged.AddListener((value) => {
+                string widthString = "";
+                int width = 0;
+                string heightString = "";
+                int height = 0;
+                bool widthFound = false;
+                for (int i = 0; i < resolutionDropDown.options[value].text.Length; i++) {
+                    if (!widthFound) {
+                        if (resolutionDropDown.options[value].text[i] != 'x') {
+                            widthString += resolutionDropDown.options[value].text[i];
+                        }
+                        else {
+                            widthFound = true;
+                        }
+                    }
+                    else {
+                        heightString += resolutionDropDown.options[value].text[i];
+                    }
+                }
+                width = int.Parse(widthString);
+                height = int.Parse(heightString);
+                Screen.SetResolution(width, height, true);
+            });
+            resolutionDropDown.value = resolutionDropDown.options.Count - 1; 
         }
     }
 
