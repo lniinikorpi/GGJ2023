@@ -38,7 +38,10 @@ public class MainMenuManager : Singleton<MainMenuManager>
             }
             int index = i + 1;
             levelButtons[i].interactable = true;
-            levelButtons[i].onClick.AddListener(() => SceneLoader.Instance.LoadScene(index));
+            levelButtons[i].onClick.AddListener(() => {
+                AudioManager.Instance.FadeAudioOut();
+                SceneLoader.Instance.LoadScene(index);
+            });
         }
     }
 

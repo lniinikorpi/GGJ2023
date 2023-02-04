@@ -12,4 +12,5 @@ public class AttackUnitData : ScriptableObject
     public float attackDelay = .4f;
     public Vector2 graphicsOffsett = Vector2.zero;
     public float dieDelay;
+    public AudioData dieData;
 }

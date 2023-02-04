@@ -41,17 +41,17 @@ public class Projectile : MonoBehaviour
         if (!m_donedDamage) {
             enemy.TakeDamage(m_damage);
             m_donedDamage = true;
+            if (onHitObject != null) {
+                Instantiate(onHitObject, transform.position, Quaternion.identity);
+            }
+            if (data.projectileOnHitEffect != null) {
+                AudioManager.Instance.PlayAudio(data.projectileOnHitData);
+            }
         }
         DestroyProjectile();
     }
 
     private void DestroyProjectile() {
-        if (onHitObject != null) {
-            Instantiate(onHitObject, transform.position, Quaternion.identity); 
-        }
-        if(data.projectileOnHitEffect != null) {
-            AudioManager.Instance.PlayAudio(data.projectileOnHitData);
-        }
 
         Destroy(gameObject);
     }

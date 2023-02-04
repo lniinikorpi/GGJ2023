@@ -76,17 +76,28 @@ public class Turret : Damageable
         m_damage *= 1f + upgrade.damageBuff / 100;
         m_currentLevel++;
         GameManager.Instance.AddCurrency(0);
+        if(m_data.upgradeData != null) {
+            AudioManager.Instance.PlayAudio(m_data.upgradeData);
+        }
         Instantiate(m_levelImagePrefab, m_levelImageParent);
     }
 
     public override IEnumerator Die() {
+        StopCoroutine(Attack());
+        m_anim.SetTrigger("Die");
         yield return new WaitForSeconds(m_data.dieDelay);
         GridManager.Instance.turrets.Remove(this);
         if(GridManager.Instance.selectedTurret == this) {
             GridManager.Instance.UnSelectTurret();
         }
-        m_anim.SetTrigger("Die");
         StartCoroutine(base.Die());
+    }
+
+    public override void TakeDamage(float damage) {
+        if (m_data.onHitAudio != null) {
+            AudioManager.Instance.PlayAudio(m_data.onHitAudio);
+        }
+        base.TakeDamage(damage);
     }
 
     private void OnCurrencyChanged(EventArgs args) {

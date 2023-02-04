@@ -9,7 +9,8 @@ public class GameManager : Singleton<GameManager>
     public List<TurretData> availableTurrest = new List<TurretData>();
     public int currency = 0;
     public bool isPause;
-
+    public AudioData victoryData;
+    public AudioData loseData;
     private void Start() {
         AddCurrency(WaveManager.Instance.waveData.startMoney);
     }
@@ -22,10 +23,13 @@ public class GameManager : Singleton<GameManager>
     }
 
     public void EndGame(bool playerWon) {
+        AudioManager.Instance.FadeAudioOut();
         if (playerWon) {
+            AudioManager.Instance.PlayAudio(victoryData);
             StateManager.completedLevels = SceneLoader.Instance.GetSceneIndex();
         }
         else {
+            AudioManager.Instance.PlayAudio(loseData);
             GlobalEventSender.SendPause(new EventArgs());
         }
         GlobalEventSender.SendGameEnd(new EventArgs() {

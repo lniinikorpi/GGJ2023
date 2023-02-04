@@ -20,6 +20,7 @@ MonoBehaviour:
   attackDelay: 0.4
   graphicsOffsett: {x: 0, y: 0}
   dieDelay: 0.6666667
+  dieData: {fileID: 0}
   projectile: {fileID: 7220310243294286790, guid: 04f5b49fbbb03a840b3da33d8aff4833, type: 3}
   projectileSpeed: 2
   price: 25
@@ -31,6 +32,8 @@ MonoBehaviour:
     attackSpeedBuff: 50
     damageBuff: 50
   projectileOnHitEffect: {fileID: 3416561732144039926, guid: 05373c35c5c91cd4a8f75ed45c8abe92, type: 3}
-  shootData: {fileID: 0}
+  shootData: {fileID: 11400000, guid: c6373a4511468fa46b8de34c11cb4936, type: 2}
   spawnData: {fileID: 11400000, guid: 31285ed75bdb9434fa3f959d0a2d3e16, type: 2}
   projectileOnHitData: {fileID: 11400000, guid: 6c512e5aa40060e438033f856e4a3134, type: 2}
+  upgradeData: {fileID: 11400000, guid: 9ae87989b710b10488eb9124868242ac, type: 2}
+  onHitAudio: {fileID: 11400000, guid: ff8a2cf082a88c3439a21286a8427cc8, type: 2}

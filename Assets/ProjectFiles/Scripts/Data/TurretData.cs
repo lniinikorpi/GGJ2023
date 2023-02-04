@@ -20,4 +20,6 @@ public class TurretData : AttackUnitData {
     public AudioData shootData;
     public AudioData spawnData;
     public AudioData projectileOnHitData;
+    public AudioData upgradeData;
+    public AudioData onHitAudio;
 }

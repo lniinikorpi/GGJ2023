@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095bb0fcc1c52014caaafd6c38194a16, type: 3}
   m_Name: Data_Place_Plant
   m_EditorClassIdentifier: 
-  volume: 1
+  volume: 0.5
   clip: {fileID: 8300000, guid: f902035ea8cd15042ad6dec0f9f570f0, type: 3}

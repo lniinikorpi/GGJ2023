@@ -31,7 +31,10 @@ public class UIManager : Singleton<UIManager>
         pauseEndPanel.SetActive(false);
         continueButton.onClick.AddListener(ContinueGame);
         restartButton.onClick.AddListener(RestartGame);
-        quitButton.onClick.AddListener(() => SceneLoader.Instance.LoadScene(0));
+        quitButton.onClick.AddListener(() => {
+            AudioManager.Instance.FadeAudioOut();
+            SceneLoader.Instance.LoadScene(0);
+        });
         pauseButton.onClick.AddListener(PauseGame);
         label.text = "Pause";
     }
@@ -47,7 +50,10 @@ public class UIManager : Singleton<UIManager>
         pauseEndPanel.SetActive(true);
         if (args.boolValue) {
             quitButton.gameObject.SetActive(false);
-            continueButton.onClick.AddListener(() => SceneLoader.Instance.LoadScene(0));
+            continueButton.onClick.AddListener(() => {
+                AudioManager.Instance.FadeAudioOut();
+                SceneLoader.Instance.LoadScene(0);
+            });
             label.text = "You won!";
         }
         else {
@@ -65,6 +71,7 @@ public class UIManager : Singleton<UIManager>
     }
 
     private void RestartGame() {
+        AudioManager.Instance.FadeAudioOut();
         SceneLoader.Instance.ReloadScene();
     }
 

@@ -12,7 +12,7 @@ public class Damageable : MonoBehaviour, IDamageable {
         Destroy(gameObject);
     }
 
-    public void TakeDamage(float damage) {
+    public virtual void TakeDamage(float damage) {
         currentHealth -= damage;
         if (isAlive) {
             return;

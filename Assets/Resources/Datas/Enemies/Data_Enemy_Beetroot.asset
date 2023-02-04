@@ -17,9 +17,10 @@ MonoBehaviour:
   health: 75
   graphicObject: {fileID: 2328927147974815779, guid: b408db8eaa9a1494382aeb1592476eca, type: 3}
   icon: {fileID: 21300000, guid: 827a92375ff383648b3e3907d50406de, type: 3}
-  attackDelay: 0.7
+  attackDelay: 0.75
   graphicsOffsett: {x: 0.2, y: 0.1}
   dieDelay: 0.8833333
+  dieData: {fileID: 0}
   movementSpeed: 0.35
   currencyEarned: 20
   attackAudio: {fileID: 0}
