@@ -40,7 +40,7 @@ public class SceneLoader : Singleton<SceneLoader>
         fader.alpha = 0;
         while(fader.alpha < 1) {
             fader.gameObject.SetActive(true);
-            fader.alpha += direction * Time.deltaTime * 2;
+            fader.alpha += direction * Time.deltaTime * 3;
             yield return new WaitForSeconds(Time.deltaTime);
         }
         SceneManager.LoadScene(sceneIndex);
@@ -49,7 +49,7 @@ public class SceneLoader : Singleton<SceneLoader>
         fader.alpha = 1;
         while (fader.alpha > 0) {
             fader.gameObject.SetActive(true);
-            fader.alpha += direction * Time.deltaTime;
+            fader.alpha += direction * Time.deltaTime * 3;
             yield return new WaitForSeconds(Time.deltaTime);
         }
         fader.blocksRaycasts = false;

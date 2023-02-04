@@ -16,6 +16,7 @@ public class Turret : Damageable
     public Button m_upgradeButton;
     private int m_currentLevel = 0;
     private float m_damage;
+    private Animator m_anim;
     public int Price { get => m_data.price; }
 
     void Update()
@@ -29,7 +30,7 @@ public class Turret : Damageable
         if(m_attackTimer == null || m_attackTimer.Update()) {
             return;
         }
-        Attack();
+        StartCoroutine(Attack());
     }
 
     public void Init(TurretData data, Row row) {
@@ -43,6 +44,7 @@ public class Turret : Damageable
         m_upgradeButton.onClick.AddListener(UpgradeTurret);
         m_damage = m_data.damage;
         m_upgradeButton.gameObject.SetActive(false);
+        m_anim = GetComponentInChildren<Animator>();
         GridManager.Instance.turrets.Add(this);
         if(m_data.spawnData != null) {
             AudioManager.Instance.PlayAudio(m_data.spawnData);
@@ -54,12 +56,14 @@ public class Turret : Damageable
         });
     }
 
-    private void Attack() {
+    private IEnumerator Attack() {
         m_attackTimer.Reset(Random.Range(m_attackTimer.duration * .9f, m_attackTimer.duration * 1.1f));
         if (!GridManager.Instance.IsEnemiesInRow(row, transform.position.x)) {
-            return;
+            yield break;
         }
-        if(m_data.shootData != null) {
+        m_anim.SetTrigger("Attack");
+        yield return new WaitForSeconds(m_data.attackDelay);
+        if (m_data.shootData != null) {
             AudioManager.Instance.PlayAudio(m_data.shootData);
         }
         Instantiate(GameManager.Instance.projectileBase, transform.position, Quaternion.identity).GetComponent<Projectile>().Init(m_data, m_damage, m_data.projectileSpeed, row);
@@ -81,6 +85,7 @@ public class Turret : Damageable
         if(GridManager.Instance.selectedTurret == this) {
             GridManager.Instance.UnSelectTurret();
         }
+        m_anim.SetTrigger("Die");
         StartCoroutine(base.Die());
     }
 

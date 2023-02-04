@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SodaOverrideController
+  m_Controller: {fileID: 9100000, guid: a747b2f49d55ff349bf0785edfee170b, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: a038467f3f897ed4a8a5f078aa3bd01b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 51f2fad1c33014e4297ff28984fcb20e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b510c41ed821d0a4ba77a9bc0b1ddb09, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a7a3fac139660ab449bab3ae75d8f815, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 992fda66572dd4c42a60c72cc4ccad74, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 992fda66572dd4c42a60c72cc4ccad74, type: 2}

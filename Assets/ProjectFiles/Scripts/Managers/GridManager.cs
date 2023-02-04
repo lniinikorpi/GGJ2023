@@ -32,13 +32,16 @@ public class GridManager : Singleton<GridManager>
     }
 
     public void HandleMouseClick() {
-        RaycastHit2D hit = Physics2D.Raycast(m_mousePosition, new Vector3(0,0,1));
+        LayerMask mask = ~LayerMask.GetMask("Ignore Raycast");
+        RaycastHit2D hit = Physics2D.Raycast(m_mousePosition, new Vector3(0,0,1),Mathf.Infinity, mask);
+        if (Util.IsPointerOverUIObject()) {
+            return;
+        }
         UnSelectTurret();
         if (!hit.transform) {
             return;
         }
-        Cell cell = hit.collider.gameObject.GetComponent<Cell>();
-        if (cell == null) {
+        if (!hit.collider.gameObject.TryGetComponent<Cell>(out var cell)) {
             return;
         }
         if(cell.spawnedTurret != null) {
