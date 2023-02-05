@@ -17,7 +17,9 @@ public class UIManager : Singleton<UIManager>
     public Button restartButton;
     public Button pauseButton;
     public Slider waveSlider;
+
     public List<Toggle> toggles { get; private set; } = new List<Toggle>();
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,7 @@ public class UIManager : Singleton<UIManager>
         pauseButton.onClick.AddListener(PauseGame);
         label.text = "Pause";
         waveSlider.value = 1;
+        anim = GetComponent<Animator>();
     }
 
     public void UnToggleAll() {
@@ -86,6 +89,11 @@ public class UIManager : Singleton<UIManager>
     }
 
     private void OnCurrencyChanged(EventArgs args) {
+        int currentAmount = int.Parse(currencyText.text);
+        if(args.intValue > currentAmount) {
+            anim.Play("addMoney");
+        }
+
         currencyText.text = args.intValue.ToString();
     }
 

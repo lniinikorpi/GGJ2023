@@ -11,6 +11,8 @@ public class MainMenuManager : Singleton<MainMenuManager>
 {
     public List<Button> levelButtons = new List<Button>();
     public GameObject mainPanel;
+    public Button playButton;
+
     public GameObject mapPanel;
     public GameObject congratsPanel;
 
@@ -23,8 +25,12 @@ public class MainMenuManager : Singleton<MainMenuManager>
     public Slider volumeSlider;
 
     public TMP_Dropdown resolutionDropDown;
+
+    public GameObject howToPlayPanel;
+    public GameObject slide1;
     private void Start() {
         congratsPanel.gameObject.SetActive(false);
+        howToPlayPanel.SetActive(false);
         switch (StateManager.state) {
             case MenuState.None:
                 mainPanel.SetActive(true);
@@ -37,6 +43,17 @@ public class MainMenuManager : Singleton<MainMenuManager>
         }
         StateManager.state = MenuState.Map;
         settingsPanel.SetActive(false);
+
+        playButton.onClick.AddListener(() => {
+            if(StateManager.showTutorial) {
+                StateManager.showTutorial = false;
+                howToPlayPanel.SetActive(true);
+                slide1.SetActive(true);
+            }
+            else {
+                mapPanel.SetActive(true);
+            }
+        });
 
         for (int i = 0; i < levelButtons.Count; i++) {
             levelButtons[i].interactable = false;

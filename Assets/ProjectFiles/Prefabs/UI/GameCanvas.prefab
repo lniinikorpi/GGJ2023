@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 427442354771310390}
   - component: {fileID: 427442354771310391}
   - component: {fileID: 427442354771310539}
+  - component: {fileID: 812632300404954905}
   m_Layer: 5
   m_Name: GameCanvas
   m_TagString: Untagged
@@ -127,6 +128,26 @@ MonoBehaviour:
   restartButton: {fileID: 427442355635119494}
   pauseButton: {fileID: 9109790515437553976}
   waveSlider: {fileID: 3614072887896190770}
+--- !u!95 &812632300404954905
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427442354771310388}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 69dd0e360c9a141438cf216dd94aa057, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &427442354940667592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,8 +1648,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Wave
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b77717ad16c545041aa7d20c4c6388fa, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: b77717ad16c545041aa7d20c4c6388fa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
